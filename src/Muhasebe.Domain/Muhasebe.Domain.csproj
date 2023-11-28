@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Muhasebe</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Muhasebe.Domain.Shared\Muhasebe.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Emailing" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.Identity.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="7.4.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="7.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BankaSubeler\" />
+    <Folder Include="Birimler\" />
+    <Folder Include="Cariler\" />
+    <Folder Include="Commons\" />
+    <Folder Include="Data\" />
+    <Folder Include="Depolar\" />
+    <Folder Include="Donemler\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Faturalar\" />
+    <Folder Include="Hizmetler\" />
+    <Folder Include="IdentityServer\" />
+    <Folder Include="Kasalar\" />
+    <Folder Include="Makbuzlar\" />
+    <Folder Include="Masraflar\" />
+    <Folder Include="OdemeBelgeleri\" />
+    <Folder Include="OzelKodlar\" />
+    <Folder Include="Parametreler\" />
+    <Folder Include="Raporlar\" />
+    <Folder Include="Stoklar\" />
+    <Folder Include="Subeler\" />
+  </ItemGroup>
+
+</Project>
