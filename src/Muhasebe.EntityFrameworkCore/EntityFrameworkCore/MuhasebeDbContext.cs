@@ -1,9 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Muhasebe.BankaHesaplar;
+using Muhasebe.Bankalar;
+using Muhasebe.BankaSubeler;
+using Muhasebe.Birimler;
+using Muhasebe.Cariler;
+using Muhasebe.Depolar;
+using Muhasebe.Donemler;
+using Muhasebe.Faturalar;
+using Muhasebe.Hizmetler;
+using Muhasebe.Kasalar;
+using Muhasebe.Makbuzlar;
+using Muhasebe.Masraflar;
+using Muhasebe.OzelKodlar;
+using Muhasebe.Parametreler;
+using Muhasebe.Stoklar;
+using Muhasebe.Subeler;
+using System.Data;
+using static Muhasebe.Consts.EntityConsts;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -12,6 +31,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using AbcYazilim.OnMuhasebe.Cofigurations;
 
 namespace Muhasebe.EntityFrameworkCore;
 
@@ -53,6 +73,24 @@ public class MuhasebeDbContext :
 
     #endregion
 
+    #region Kartları Ekliyoruz
+    public DbSet<Banka> Bankalar { get; set; }
+    public DbSet<BankaSube> BankaSubeler { get; set; }
+    public DbSet<BankaHesap> BankaHesaplar { get; set; }
+    public DbSet<Birim> Birimler { get; set; }
+    public DbSet<Cari> Cariler { get; set; }
+    public DbSet<Depo> Depolar { get; set; }
+    public DbSet<Donem> Donemler { get; set; }
+    public DbSet<FirmaParametre> FirmaParametreler { get; set; }
+    public DbSet<Fatura> Faturalar { get; set; }
+    public DbSet<Hizmet> Hizmetler { get; set; }
+    public DbSet<Kasa> Kasalar { get; set; }
+    public DbSet<Makbuz> Makbuzlar { get; set; }
+    public DbSet<Masraf> Masraflar { get; set; }
+    public DbSet<OzelKod> OzelKodlar { get; set; }
+    public DbSet<Stok> Stoklar { get; set; }
+    public DbSet<Sube> Subeler { get; set; }
+    #endregion Kartları Ekliyoruz
     public MuhasebeDbContext(DbContextOptions<MuhasebeDbContext> options)
         : base(options)
     {
@@ -74,13 +112,26 @@ public class MuhasebeDbContext :
         builder.ConfigureFeatureManagement();
         builder.ConfigureTenantManagement();
 
-        /* Configure your own tables/entities inside here */
-
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(MuhasebeConsts.DbTablePrefix + "YourEntities", MuhasebeConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        #region Builder Extend işlemi ile
+        builder.ConfigureStoredProcedure();
+        builder.ConfigureBanka();
+        builder.ConfigureBankaSube();
+        builder.ConfigureBankaHesap();
+        builder.ConfigureBirim();
+        builder.ConfigureCari();
+        builder.ConfigureDepo();
+        builder.ConfigureDonem();
+        builder.ConfigureFatura();
+        builder.ConfigureFaturaHareket();
+        builder.ConfigureFirmaParametre();
+        builder.ConfigureHizmet();
+        builder.ConfigureKasa();
+        builder.ConfigureMakbuz();
+        builder.ConfigureMakbuzHareket();
+        builder.ConfigureMasraf();
+        builder.ConfigureOzelKod();
+        builder.ConfigureStok();
+        builder.ConfigureSube();
+        #endregion Builder Extend işlemi ile
     }
 }

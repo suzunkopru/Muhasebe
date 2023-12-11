@@ -1,5 +1,5 @@
-﻿namespace Muhasebe.Bankalar;
-public class Banka : FullAuditedAggregateRoot<Guid>
+﻿namespace Muhasebe.Birimler;
+public class Birim : FullAuditedAggregateRoot<Guid>
 {
     public string Kod { get; set; }
     public string Ad { get; set; }
@@ -10,6 +10,8 @@ public class Banka : FullAuditedAggregateRoot<Guid>
 
     public OzelKod OzelKod1 { get; set; }
     public OzelKod OzelKod2 { get; set; }
-    public ICollection<BankaSube> BankaSubeler { get; set; }
-    public ICollection<MakbuzHareket> MakbuzHareketler { get; set; }
+
+    public ICollection<Hizmet> Hizmetler { get; set; }
+    public ICollection<Masraf> Masraflar { get; set; }
+    public ICollection<Stok> Stoklar { get; set; }
 }

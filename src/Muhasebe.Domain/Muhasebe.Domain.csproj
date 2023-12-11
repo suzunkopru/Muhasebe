@@ -26,27 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BankaSubeler\" />
-    <Folder Include="Birimler\" />
-    <Folder Include="Cariler\" />
     <Folder Include="Commons\" />
     <Folder Include="Data\" />
-    <Folder Include="Depolar\" />
-    <Folder Include="Donemler\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Faturalar\" />
-    <Folder Include="Hizmetler\" />
     <Folder Include="IdentityServer\" />
-    <Folder Include="Kasalar\" />
-    <Folder Include="Makbuzlar\" />
-    <Folder Include="Masraflar\" />
-    <Folder Include="OdemeBelgeleri\" />
-    <Folder Include="OzelKodlar\" />
-    <Folder Include="Parametreler\" />
     <Folder Include="Raporlar\" />
-    <Folder Include="Stoklar\" />
-    <Folder Include="Subeler\" />
   </ItemGroup>
 
 </Project>
