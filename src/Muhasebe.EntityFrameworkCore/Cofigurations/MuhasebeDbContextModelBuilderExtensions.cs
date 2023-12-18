@@ -1122,7 +1122,6 @@ public static class MuhasebeDbContextModelBuilderExtensions
             //relations
         });
     }
-
     public static void ConfigureStoredProcedure(this ModelBuilder builder)
     {        
         builder.Entity<OdemeBelgesi>();

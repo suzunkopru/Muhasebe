@@ -19,3 +19,4 @@ global using Muhasebe.Makbuzlar;
 global using Muhasebe.Parametreler;
 global using Muhasebe.Stoklar;
 global using Muhasebe.Masraflar;
+global using Muhasebe.Commons;
