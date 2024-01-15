@@ -22,4 +22,13 @@
     <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.4.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commons\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="OdemeBelgeleri\" />
+    <Folder Include="Parametreler\" />
+    <Folder Include="Raporlar\" />
+  </ItemGroup>
+
 </Project>
