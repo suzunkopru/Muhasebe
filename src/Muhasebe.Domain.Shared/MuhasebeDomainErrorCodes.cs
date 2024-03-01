@@ -2,5 +2,5 @@
 
 public static class MuhasebeDomainErrorCodes
 {
-    /* You can add your business exception error codes here, as constants */
+    public const string DuplicateKod = "Hata:0001";
 }
