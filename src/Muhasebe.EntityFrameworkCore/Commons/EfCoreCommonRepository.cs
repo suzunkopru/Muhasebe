@@ -47,7 +47,7 @@ public class EfCoreCommonRepository<TEntity> : EfCoreRepository<MuhasebeDbContex
 
         queryable = queryable.Where(predicate!) ?? queryable;
         queryable = queryable.OrderBy(orderBy!) ?? queryable;
-        
+
         return await queryable
             .Skip(skipCount)
             .Take(maxResultCount)
@@ -99,14 +99,15 @@ public class EfCoreCommonRepository<TEntity> : EfCoreRepository<MuhasebeDbContex
         //    newCode += newNumber;
         //    return newCode;
         //}
-        static string CreateNewCode(string kod)
+        static string CreateNewCode(string code)
         {
-            int i = kod.Length; 
-            while (i > 0 && char.IsDigit(kod[--i])) ;
-            string onEk = kod.Substring(0, i + 1);
-            string subStr = kod.Substring(i + 1);
-            string rakamStr = string.IsNullOrEmpty(subStr) ? "1" : (long.Parse(subStr) + 1).ToString();
-            return onEk + rakamStr;
+            int i = code.Length - 1;
+            code.Reverse().ToList().ForEach(x => 
+            {
+                if (char.IsDigit(x)) i--;
+            });
+            var newNumber = (i < code.Length - 1) ? (long.Parse(code.Substring(i + 1)) + 1).ToString() : "1";
+            return code.Substring(0, Math.Max(i + 1, 0)) + newNumber;
         }
         var dbSet = await GetDbSetAsync();
         var maxCode = predicate == null ?

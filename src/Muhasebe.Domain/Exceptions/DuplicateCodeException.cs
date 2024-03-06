@@ -1,5 +1,4 @@
 ﻿using Volo.Abp;
-
 namespace Muhasebe.Exceptions;
 public class DuplicateCodeException: BusinessException
 {
