@@ -27,10 +27,9 @@ public static class EntityAsyncExtensions
                 throw new EntityNotFoundException(typeof(TEntity), id);
         }
     }
-
     public static async Task EntityAnyAsync(
-        this IReadOnlyRepository<OzelKod> repository, Guid? id, OzelKodTuru kodTuru,
-        KartTuru kartTuru, bool check = true)
+    this IReadOnlyRepository<OzelKod> repository, Guid? id, OzelKodTuru kodTuru,
+    KartTuru kartTuru, bool check = true)
     {
         if (check && id != null)
         {

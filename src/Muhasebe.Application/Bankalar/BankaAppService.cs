@@ -1,19 +1,20 @@
-﻿using Muhasebe.CommonDtos;
+﻿using Muhasebe.BankaSubeler;
+using Muhasebe.CommonDtos;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Repositories;
 namespace Muhasebe.Bankalar;
-public class BankaAppService(IBankaRepository bankaRepository, BankaManager _bankaManager) : MuhasebeAppService, IBankaAppService 
+public class BankaAppService(IBankaRepository _bankaRepository, BankaSubeManager _bankaManager) : MuhasebeAppService, IBankaAppService 
 {
-    private readonly IBankaRepository _bankaRepository = bankaRepository;
-    private readonly BankaManager _bankaManager=_bankaManager;
+    private readonly IBankaRepository _bankaRepository = _bankaRepository;
+    private readonly BankaSubeManager _bankaManager =_bankaManager;
     public virtual async Task<SelectBankaDto> GetAsync(Guid id)
     {
         var entity = await _bankaRepository.GetAsync(id, x => x.Id == id, 
             b=> b.OzelKod1, b => b.OzelKod2);
-        return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
+        return ObjectMapper.Map<Banka, SelectBankaDto>(entity);                          
     }
     public virtual async Task<PagedResultDto<ListBankaDto>> GetListAsync(BankaListParameterDto input)
     {
@@ -26,15 +27,16 @@ public class BankaAppService(IBankaRepository bankaRepository, BankaManager _ban
     }
     public virtual async Task<SelectBankaDto> CreateAsync(CreateBankaDto input)
     {
-        await _bankaManager.CheckCreateAsync(input.Kod, input.OzelKod1Id, input.OzelKod2Id);
         var entity = ObjectMapper.Map<CreateBankaDto, Banka>(input);
         await _bankaRepository.InsertAsync(entity);
-        return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
+        return NewMethod(entity);
     }
+
+    private SelectBankaDto NewMethod(Banka entity) => ObjectMapper.Map<Banka, SelectBankaDto>(entity);
+
     public virtual async Task<SelectBankaDto> UpdateAsync(Guid id, UpdateBankaDto input)
     {
         var entity = await _bankaRepository.GetAsync(id, b => b.Id == id);
-        await _bankaManager.CheckUpdateAsync(id, input.Kod, entity, input.OzelKod1Id, input.OzelKod2Id);
         var mappedEntity = ObjectMapper.Map(input, entity);
         await _bankaRepository.UpdateAsync(mappedEntity);
         return ObjectMapper.Map<Banka, SelectBankaDto>(mappedEntity);
