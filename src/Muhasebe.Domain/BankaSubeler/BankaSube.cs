@@ -10,8 +10,8 @@ public class BankaSube: FullAuditedAggregateRoot<Guid>
     public bool Durum { get; set; }
 
     public Banka Banka { get; set; }
-    public OzelKod OzelKod1 { get; set; }
-    public OzelKod OzelKod2 { get; set; }
+    public OzelKod? OzelKod1 { get; set; }
+    public OzelKod? OzelKod2 { get; set; }
 
     public ICollection<BankaHesap> BankaHesaplar { get; set; }
     public ICollection<MakbuzHareket> MakbuzHareketler { get; set; }

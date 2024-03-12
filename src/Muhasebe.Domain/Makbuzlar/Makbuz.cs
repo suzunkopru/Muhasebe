@@ -22,8 +22,8 @@ public class Makbuz : FullAuditedAggregateRoot<Guid>
     public Cari Cari { get; set; }
     public Kasa Kasa { get; set; }
     public BankaHesap BankaHesap { get; set; }
-    public OzelKod OzelKod1 { get; set; }
-    public OzelKod OzelKod2 { get; set; }
+    public OzelKod? OzelKod1 { get; set; }
+    public OzelKod? OzelKod2 { get; set; }
     public Sube Sube { get; set; }
     public Donem Donem { get; set; }
 

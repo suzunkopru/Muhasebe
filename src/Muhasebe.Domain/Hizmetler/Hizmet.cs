@@ -13,8 +13,8 @@ public class Hizmet : FullAuditedAggregateRoot<Guid>
     public bool Durum { get; set; }
 
     public Birim Birim { get; set; }
-    public OzelKod OzelKod1 { get; set; }
-    public OzelKod OzelKod2 { get; set; }
+    public OzelKod? OzelKod1 { get; set; }
+    public OzelKod? OzelKod2 { get; set; }
 
     public ICollection<FaturaHareket> FaturaHareketler { get; set; }
 }

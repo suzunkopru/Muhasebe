@@ -29,11 +29,8 @@ public class BankaAppService(IBankaRepository _bankaRepository, BankaSubeManager
     {
         var entity = ObjectMapper.Map<CreateBankaDto, Banka>(input);
         await _bankaRepository.InsertAsync(entity);
-        return NewMethod(entity);
+        return ObjectMapper.Map<Banka, SelectBankaDto>(entity);
     }
-
-    private SelectBankaDto NewMethod(Banka entity) => ObjectMapper.Map<Banka, SelectBankaDto>(entity);
-
     public virtual async Task<SelectBankaDto> UpdateAsync(Guid id, UpdateBankaDto input)
     {
         var entity = await _bankaRepository.GetAsync(id, b => b.Id == id);
